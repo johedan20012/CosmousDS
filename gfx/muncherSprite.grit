@@ -1,0 +1,11 @@
+# Set the warning/log level to 3
+-W3
+
+#Establece el color "0x209c00" como el color transparente
+-gT00FF00
+
+# Bitmap image
+-gb
+
+# Set the bit depth to 16
+-gB16
