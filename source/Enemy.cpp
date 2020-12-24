@@ -70,6 +70,10 @@ void Enemy::Hit(){
     sPlayer->AddScore(10);
 }
 
+bool Enemy::IsDead(){
+    return (mEstado == dead);
+}
+
 void Enemy::SetPlayer(Player* pPlayer){
     sPlayer = pPlayer;
 }

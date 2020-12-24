@@ -10,9 +10,7 @@
 
 ///Archivos .h locales
 #include "FunctionHelper.h"
-#include "PhysicsManager.h"
-#include "Player.h"
-#include "Enemy.h"
+#include "Level.h"
 
 ///Fondos
 #include "logoInicio.h"
@@ -48,8 +46,7 @@ private:
     ESTADO mEstado = inicio;
 
     Player* mPlayer;
-    static const int mEnemiesCount = 20;
-    Enemy* mEnemies[mEnemiesCount];
+    Level* mLevel;
     //Fruta* fruta;
 
     int fondo2,fondo2Sub,fondo3;

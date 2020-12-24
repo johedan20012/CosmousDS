@@ -141,14 +141,8 @@ void GameManager::Update(){
             mEstado = jugando;
             //serp = new Serpiente((u16*)bgGetMapPtr(fondo3));
             //fruta = new Fruta((u16*)bgGetMapPtr(fondo3));
-            for(int i=0; i<5; i++){
-                mEnemies[i] = new Enemy(Vector2(20+40*i,20),i+5,Enemy::croncher);
-                mEnemies[i+5] = new Enemy(Vector2(20+40*i,40),i+10,Enemy::muncher);
-                mEnemies[i+10] = new Enemy(Vector2(20+40*i,60),i+15,Enemy::destroyer);
-                mEnemies[i+15] = new Enemy(Vector2(20+40*i,80),i+20,Enemy::spawner);
-            }
             mPlayer = new Player(0);
-            Enemy::SetPlayer(mPlayer);
+            mLevel = new Level(mPlayer);
 
             //dmaCopy(snakeSpritePal, SPRITE_PALETTE, snakeSpritePalLen);
             //dmaCopy(snakeSpriteBitmap, serp->sprPtr, snakeSpriteBitmapLen);
@@ -172,14 +166,11 @@ void GameManager::Update(){
             bgSetPriority(fondo3,0); */
         }
     }else if(mEstado == jugando){
-        Rect hitboxAux;
-        mPlayer->Update();
-        for(int i=0; i<mEnemiesCount; i++){
-            if(mEnemies[i] == nullptr) continue;
-            mEnemies[i]->Update();
+        mLevel->Update();
+        if(mLevel->Finished()){
+            delete mLevel;
+            mLevel = new Level(mPlayer);
         }
-        mPhysMgr->Update();
-
         /*if(fruta->pos.x == serp->cuerpo[serp->cuerpo.size()-1]->posX && fruta->pos.y == serp->cuerpo[serp->cuerpo.size()-1]->posY){
             serp->Crecer();
             fruta->Reubicar();
@@ -227,8 +218,6 @@ void GameManager::Render(){
         iprintf("\x1b[2J");
         iprintf("\x1b[2;2HScore:%d",mPlayer->GetScore());
         iprintf("\x1b[4;2HLifes:%d",mPlayer->GetLifes());
-        Rect aux = mEnemies[2]->GetHitbox();
-        iprintf("\x1b[6;2HLifes:%d,%d,%d,%d",aux.topLeftCorner().x,aux.topLeftCorner().y,aux.width(),aux.height());
     }
     /*if(mEstado == jugando){
         iprintf("\x1b[2J");

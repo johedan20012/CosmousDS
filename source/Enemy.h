@@ -35,6 +35,7 @@ public:
 
     void Update();
     void Hit() override;
+    bool IsDead();
 
     static void SetPlayer(Player* pPlayer);
 private:
