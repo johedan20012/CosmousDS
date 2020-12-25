@@ -11,6 +11,7 @@
 ///Archivos .h locales
 #include "FunctionHelper.h"
 #include "Level.h"
+#include "SoundManager.h"
 
 ///Fondos
 #include "logoInicio.h"
@@ -23,10 +24,6 @@
 
 ///Sprites
 //#include "snakeSprite.h"
-
-///Bancos de sonido
-//#include "soundbank.h"
-//#include "soundbank_bin.h"
 
 class GameManager{
 

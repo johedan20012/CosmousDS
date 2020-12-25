@@ -17,6 +17,9 @@ Player::Player(int pOamId) : Entity(Rect(Vector2(120,126),16,16)){
 			mSprPtr, -1, false, false, false, false, false);
 
     mId = PhysicsManager::Instance()->AddEntity(this,PhysicsManager::CollisionLayers::Friendly);
+
+    mSoundMgr = SoundManager::Instance();
+    mmLoadEffect(SFX_LASER);
 }
 
 Player::~Player(){
@@ -29,6 +32,7 @@ Player::~Player(){
         delete mBullets[i];
         mBullets[i] = nullptr;
     }
+    mmUnloadEffect(SFX_LASER);
 }
 
 void Player::Update(){
@@ -47,6 +51,7 @@ void Player::Update(){
     if(keysDown() & KEY_A){
         for(int i=0; i<2; i++){
             if(mBullets[i]->IsReady()){
+                mmEffect(SFX_LASER);
                 mBullets[i]->Fire(mHitbox.topLeftCorner()+Vector2(8,0));
                 break;
             }

@@ -7,6 +7,10 @@
 GameManager* kGameManager;
 
 int main(void){
+    mmInitDefaultMem( (mm_addr)soundbank_bin );
+
+	// Start playing module
+	//mmStart( MOD_MUSICA, MM_PLAY_LOOP );
 
     kGameManager = GameManager::Instacia();
 
@@ -14,6 +18,9 @@ int main(void){
 
     GameManager::Liberar();
     kGameManager = nullptr;
+
+
+
     /*
     mmInitDefaultMem((mm_addr)soundbank_bin);
 

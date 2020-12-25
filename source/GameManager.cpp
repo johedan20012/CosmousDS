@@ -20,6 +20,8 @@ GameManager::GameManager(){
 GameManager::~GameManager(){
     PhysicsManager::Release();
     mPhysMgr = nullptr;
+
+    SoundManager::Release();
 }
 
 void GameManager::Liberar(){
@@ -69,6 +71,7 @@ void GameManager::Run(){
 	if(!fatInitDefault()){
         iprintf("No se pudo iniciar libfat");
     }*/
+
 
     fondo2 = bgInit(2,BgType_Bmp8, BgSize_B8_128x128, 0,0);
     dmaCopy(logoInicioBitmap, bgGetGfxPtr(fondo2), logoInicioBitmapLen);

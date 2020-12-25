@@ -3,8 +3,14 @@
 #include "MathHelper.h"
 #include "playerSprite.h"
 #include "PhysicsManager.h"
+#include "SoundManager.h"
 #include "Bullet.h"
 #include <nds.h>
+#include <maxmod9.h>
+
+///Bancos de sonido
+#include "soundbank.h"
+#include "soundbank_bin.h"
 
 class Player : public Entity{
 
@@ -16,6 +22,7 @@ private:
     int mOamId; ///Id del array del OAM
 
     Bullet* mBullets[2];
+    SoundManager* mSoundMgr;
 
     /*u16* mapaTiles;///memVramMap; ///Esto es un puntero a la parte de la memoria de video donde esta el mapa del fondo 1*/
   /*public:  u16* sprPtr;  ///Esto es un puntero a la dirección de memoria donde se guarda la informacion del sprite de la serpiente
